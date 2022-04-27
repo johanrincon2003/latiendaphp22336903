@@ -17,41 +17,51 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('Paises', function() {
-    
-    $paises = [
-        "Colombia" => [ 
-            "Capital" => "Bogota", 
-            "Moneda" => "Peso Colombiano",
-            "Poblacion" => "50'880.000",
-            "Ciudades" => [
-                "Bogota",
-                "Medellin",
-                "Cali"
-            ]
-        ],
-        "Peru" => [
-            "Capital" => "Lima", 
-            "Moneda" => "Soles",
-            "Poblacion" => "32'970.000"
-        ], 
-        "Paraguay" => [
-            "Capital" => "Asuncion", 
-            "Moneda" => "GuaranÃ­ paraguayo",
-            "Poblacion" => "7'133.000"
-        ],
-        "Ecuador" => [ 
-            "Capital" => "Quito", 
-            "Moneda" => "Dolar",
-            "Poblacion" => "17'400.000"
-        ],
-        "Brasil" => [
-            "Capital" => "Brasilia", 
-            "Moneda" => "Reales",
-            "Poblacion" => "212'600.000"   
-        ]   
-    ];
 
-    return view('Paises') ->with('vivideros', $paises);
-} );
-                                                                              
+
+Route::get('paises', function(){
+    $paises = [
+        "Colombia" => [
+            "cap" => "Bogotá",
+            "mon" => "Peso",
+            "pob" => 51.6,
+            "ciudades" => [
+               "Medellin",
+                "Cali",
+                "Barranquilla",
+                "Ibague",
+                "Barrancabermeja"
+            ]
+            ],
+            "Peru" => [
+                "cap" => "Lima",
+                "mon" => "Soles",
+                "pob" => 32.9,
+                "ciudades" => [
+                    "Ayucucho",
+                     "Cusco",
+                     "Arequipa"
+                    
+
+                 ]
+            ],
+            "Paraguay" => [
+                "cap" => "Asuncion",
+                "mon" => "Guiaraní",
+                "pob" => 7.133,
+                "ciudades" => [
+                    "Ciudad del Este",
+                     "Encarnación",
+                 ]
+            ]
+            ,"Ecuador" => [
+                "cap" => "Quito",
+                "mon" => "Dolar",
+                "pob" => 17.4,
+                "ciudades" => [
+                    "Guayaquil"
+                 ]
+            ]
+    ];
+    return view('paises') ->with ('paises',$paises);
+});
