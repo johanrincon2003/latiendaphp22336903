@@ -21,3 +21,51 @@ Route::get('/', function () {
 Route::get ('hola',function() {
 echo"hola le dijo la araña a la mosca ";
 });
+Route::get('paises',function(){
+$paises=[
+    "colombia"=>[
+    "cap"=>"Bogotá",
+    "mon"=> "peso",
+    "pob"=> 51.6,
+    "ciudades"=> [
+        "medellin",
+        "cali",
+        "Barranquilla"
+          ]
+    ],
+        "España"=>[
+            "cap"=>"Madrid",
+            "mon"=> "Euro",
+            "pob"=>  47,44,
+            "ciudades"=> [
+                "Barcelona",
+                "sevilla",
+                "granada"
+                  ]
+            ],
+                "Ecuador"=>[
+                    "cap"=>"Quito",
+                    "mon"=> "dolar",
+                    "pob"=>  20,
+                    "ciudades"=> [
+                        "cuenca ",
+                        "guayaquil",
+                        "Ambato"
+                          ]
+                    ],
+                    "Italia "=>[
+                        "cap"=>"Roma",
+                        "mon"=> "Euro",
+                        "pob"=>  59.23,
+                        "ciudades"=> [
+                            "florecia ",
+                            "milán",
+                            "turin"
+                              ]
+                            ]
+        
+    ];
+    return view ('paises')
+    ->with("paises",$paises );
+   
+});
