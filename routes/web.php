@@ -62,7 +62,17 @@ $paises=[
                             "milán",
                             "turin"
                               ]
-                            ]
+                        ],
+                        "Argentina "=>[
+                            "cap"=>"Buenos Aires",
+                            "mon"=> "peso argentino",
+                            "pob"=>  45.38,
+                            "ciudades"=> [
+                                "Rosario",
+                                "Mendoza",
+                                
+                                  ]
+                                ]
         
     ];
     return view ('paises')
