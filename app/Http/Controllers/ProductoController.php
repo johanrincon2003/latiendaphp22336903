@@ -15,6 +15,8 @@ class ProductoController extends Controller
     public function index()
     {
         //
+
+        echo "Aqui va a ir el catalogo demasiado brutal";
     }
 
     /**
@@ -36,6 +38,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         //
+        echo "Aqui se registra el nuevo producto";
     }
 
     /**
@@ -46,7 +49,7 @@ class ProductoController extends Controller
      */
     public function show(producto $producto)
     {
-        //
+        echo "Aqui se va a mostrar el detalle del producto";
     }
 
     /**
@@ -57,7 +60,7 @@ class ProductoController extends Controller
      */
     public function edit(producto $producto)
     {
-        //
+        echo "Aqui se muestra el formulario de editar producto";
     }
 
     /**
@@ -69,7 +72,7 @@ class ProductoController extends Controller
      */
     public function update(Request $request, producto $producto)
     {
-        //
+        echo "Guarda el producto editado";
     }
 
     /**
@@ -80,6 +83,6 @@ class ProductoController extends Controller
      */
     public function destroy(producto $producto)
     {
-        //
+        echo "Aqui se van a eliminar los productos";
     }
 }

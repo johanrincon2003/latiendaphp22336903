@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,3 +78,4 @@ Route::get('prueba', function(){
  * 
  */
 Route::resource('productos', ProductoController::class );
+
