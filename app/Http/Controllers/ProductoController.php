@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Marca;
 use App\Models\producto;
 use Illuminate\Http\Request;
 
@@ -26,8 +28,12 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
-        return view('productos.create');
+        //Seleccionar marcas en bd: Model Marca
+        $Marcas = Marca::all();
+        
+        //Seleccionar marcas en bd: Model Marca
+        $categorias = Categoria::all();
+        return view('productos.create')->with("marcas", $Marcas)->with("categorias", $categorias);
     }
 
     /**

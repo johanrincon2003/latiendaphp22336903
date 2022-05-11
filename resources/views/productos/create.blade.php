@@ -34,13 +34,37 @@
             <div class="btn">
               <span>Imagen de producto</span>
               <input type="file" name="imagen">
-            </div>
-            <div class="file-path-wrapper">
-              <input class="file-path validate" type="text">
-            </div>
+            </div>         
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="input-field col s8 ">
+          <select name="categoria">
+            <option value="" disabled selected>Eliga Categoria</option>
+            @foreach ($categorias as $categoria)
+              <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+
+            @endforeach
+          </select>
+          <label>Categorias disponibles en la tienda del Jean</label>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="input-field col s8 ">
+          <select name="marca">
+            <option value="" disabled selected>Eliga marca</option>
+            @foreach ($marcas as $marca)
+              <option value="{{$marca->id}}">{{$marca->nombre}}</option>
+
+            @endforeach
+          </select>
+          <label>Categorias disponibles en la tienda del Jean</label>
+        </div>
+      </div>
+
+
       <div class="row">
         <div class="col s8">
           <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
