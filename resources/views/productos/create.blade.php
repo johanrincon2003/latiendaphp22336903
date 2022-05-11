@@ -1,15 +1,18 @@
 @extends('layouts.principal')
 
 @section('contenido')
+<div class="row"> 
+  <h2 class="cyan-text text-accent-2">Nuevo Producto de la tienda de Jean</h2>
+</div>
     
   
   
   <div class="row">
     <form class="col s12">
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s8">
           <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
+          <label for="first_name"></label>
         </div>
         <div class="input-field col s6">
           <input id="last_name" type="text" class="validate">

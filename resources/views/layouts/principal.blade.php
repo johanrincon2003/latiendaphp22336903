@@ -11,7 +11,7 @@
   <body>
     
   </body>
-  <nav>
+  <nav class="lime darken-3">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">La Tienda del Jean</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
