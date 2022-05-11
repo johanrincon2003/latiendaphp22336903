@@ -27,6 +27,7 @@ class ProductoController extends Controller
     public function create()
     {
         //
+        return view('productos.create');
     }
 
     /**
@@ -47,7 +48,7 @@ class ProductoController extends Controller
      * @param  \App\Models\producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function show(producto $producto)
+    public function show($producto)
     {
         echo "Aqui se va a mostrar el detalle del producto";
     }
