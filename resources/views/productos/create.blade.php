@@ -2,7 +2,7 @@
 
 @section('contenido')
 <div class="row"> 
-  <h2 class="cyan-text text-accent-2">Nuevo Producto de la tienda de Jean</h2>
+  <h2 class="cyan-text text-accent-2">Nuevo Producto del Lichigo de Jean</h2>
 </div>
     
   
