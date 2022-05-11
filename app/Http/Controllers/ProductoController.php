@@ -44,8 +44,16 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        echo "Aqui se registra el nuevo producto";
+        
+        //crear una entidad <<producto>>
+        $p = new producto();
+        $p-> nombre = $request->nombre;
+        $p->desc = $request->desc;
+        $p->precio =$request->precio;
+        $p->marca_id = $request->marca;
+        $p->categoria_id=$request->categoria;
+        $p->save();
+        echo "Producto registrado";
     }
 
     /**

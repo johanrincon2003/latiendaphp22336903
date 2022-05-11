@@ -8,7 +8,9 @@
   
   
   <div class="row">
-    <form class="col s12">
+    <form method="POST"   action="{{route('productos.store')}}"
+     class="col s12">
+     @csrf  
       <div class="row">
         <div class="input-field col s8">
           <input id="nombre" name="nombre" type="text" class="validate">
@@ -18,8 +20,7 @@
       <div class="row">
         <div class="input-field col s8">
           <textarea id="desc" class="materialize-textarea" name="desc"></textarea>
-          <label for="textarea1">Descripcion  </label>
-          <label for="Descripcion"></label>
+          <label for="desc">Descripcion  </label>         
         </div>
       </div>
       <div class="row">
