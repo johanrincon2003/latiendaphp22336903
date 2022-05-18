@@ -92,7 +92,7 @@ class ProductoController extends Controller
      * @param  \App\Models\producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, producto $producto)
+    public function update($request, producto $producto)
     {
         echo "Guarda el producto editado";
     }
