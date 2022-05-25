@@ -17,9 +17,11 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
-
-        echo "Aqui va a ir el catalogo demasiado brutal";
+        
+     //seleccionar todos los productos en un arreglo
+       $productos=producto::all();
+       // mostrar la vista de catalogo llevandole los productos
+        
     }
 
     /**
@@ -52,13 +54,26 @@ class ProductoController extends Controller
             //crear una entidad <<producto>>
         $p = new producto();
         $p-> nombre = $request->nombre;
-        $p->desc = $request->desc;
+        $p->desc = $request->descripcion;
         $p->precio =$request->precio;
-        $p->marca_id = $request->marca;
+        $p->marca_id = $request->Marca;
         $p->categoria_id=$request->categoria;
-        $p->save();
+
+        $archivo = $request->imagen;
+
+        $p->imagen= $archivo ->getClientOriginalName();
+
+        $ruta= public_path()."/img";
+
+        $archivo-> move($ruta,$archivo ->getClientOriginalName());
+
+       
         
-        return redirect('productos/create')->with('mensaje','Producto registrado');
+       $p->save();
+
+        
+        return redirect('productos/create')
+           ->with('mensajito','Producto registrado');
         
         
     }
@@ -105,6 +120,6 @@ class ProductoController extends Controller
      */
     public function destroy(producto $producto)
     {
-        echo "Aqui se van a eliminar los productos";
+        echo " Eliminar los productos";
     }
 }
