@@ -23,25 +23,30 @@ class StoreProductoRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            "nombre"=> 'required | alpha |unique :productos,nombre',
-            "descripcion"=>'required | max:100',
-            "precio"=>'required | numeric | max: 10000',
-            "imagen"=>'required | image | unique :productos,imagen'
-        ];
-        
+             //1. establecer reglas de validación
+             return [
+                "nombre" => 'required|alpha|unique:productos,nombre',
+                "desc" => 'required|max:100',
+                "precio" => 'required|numeric:10000',
+                "categoria" => 'required',
+                "marca" => 'required',
+                "imagen" => 'required|image'
+                ];
+    
     }
-    //mensajes personalizados
-    public function messages(){
-    return [
-        'required '=> 'dato obligatorio',
-        'alpha'=> 'solo letras',
-        'max'=>'maximo :max caractéres ',
-        'numeric'=> 'solo numeros',
-        'unique'=>'Este dato ya existe ',
-        'image'=>'no es de tipo png'
 
-    ];
-        
+    /**
+     * Mensajes personalizados
+     */
+    public function messages(){
+        return[
+                'required' => 'dato obligatorio',
+                'alpha' => 'solo letras',
+                'max' => 'max :maxartisan  caracteres',
+                'numeric' => 'Solo números',
+                'unique' => 'El producto ya existe',
+                'image' => 'solo archivos "PNG" y "JPG" '
+
+        ];
     }
 }

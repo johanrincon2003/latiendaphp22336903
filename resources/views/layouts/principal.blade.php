@@ -2,37 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="{{ asset('materialize/css/materialize.css') }}">    <title></title>
+    <link rel="stylesheet" href="{{  asset('materialize/css/materialize.css')  }}">
+    <title></title>
 </head>
 <body>
-  <body>
-    
-  </body>
-  <nav class="lime darken-3">
+<nav class='lime darken-3'>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">La Tienda del Jean</a>
+      <a href="#" class="brand-logo">Latienda</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="badges.html">Productos</a></li>
         <li><a href="collapsible.html">Pedidos</a></li>
       </ul>
     </div>
   </nav>
-
   <div class="container">
-    <!-- Page Content goes here -->
-    @yield('contenido')
+  @yield('contenido')
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="{{asset('materialize/js/materialize.js')}}"></script>
-  <script >
-      document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, []);
-  });<!-- -->
-        
+  <script>
+     $(document).ready(function(){
+          $('ul.tabs').tabs();
+         $('ul.tabs').tabs('select_tab', 'tab_id');
+         $('select').formSelect();
+});
   </script>
- 
 </body>
 </html>

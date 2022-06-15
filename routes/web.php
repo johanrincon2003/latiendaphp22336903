@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,63 +19,77 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-Route::get('paises', function(){
-    $paises = [
+Route::get('paises' , function(){ 
+    $paises =[
         "Colombia" => [
-            "cap" => "Bogotá",
+            "cap" => "Bogota",
             "mon" => "Peso",
-            "pob" => 51.6,
+            "pob" => "51.6",
             "ciudades" => [
-               "Medellin",
-                "Cali",
-                "Barranquilla",
-                "Ibague",
-                "Barrancabermeja"
+                "Medellin",
+                "Cali", 
+                "Barranquilla"
             ]
             ],
-            "Peru" => [
-                "cap" => "Lima",
-                "mon" => "Soles",
-                "pob" => 32.9,
-                "ciudades" => [
-                    "Ayucucho",
-                     "Cusco",
-                     "Arequipa"
-                    
-
-                 ]
-            ],
-            "Paraguay" => [
-                "cap" => "Asuncion",
-                "mon" => "Guiaraní",
-                "pob" => 7.133,
-                "ciudades" => [
-                    "Ciudad del Este",
-                     "Encarnación",
-                 ]
-            ]
-            ,"Ecuador" => [
+            "Ecuador" => [
                 "cap" => "Quito",
                 "mon" => "Dolar",
-                "pob" => 17.4,
-                "ciudades" => [
-                    "Guayaquil"
-                 ]
-            ]
-    ];
-    return view('paises') ->with ('paises',$paises);
+                "pob" => "20",
+             "ciudades"=> [
+            "Cuenca",
+            "Guayaquil"
+             ]
+             ],
+             "Venezuela" => [
+                "cap" => "Caracas",
+                "mon" => "Bolivar",
+                "pob" => "28.44",
+             "ciudades"=> [
+            "Maracaibo",
+            "Zulia",
+            "Barquisimeto",
+            "Merida"
+             ]
+             ],
+             "Paraguay" => [
+                "cap" => "Asunción",
+                "mon" => "Guaraní",
+                "pob" => "7.1",
+             "ciudades"=> [
+            "Ciudad del este"
+             ]
+             ],
+             "Jamaica" => [
+                "cap" => "Kingston",
+                "mon" => "Dólar Jaimaiquino",
+                "pob" => "2.9",
+             "ciudades"=> [
+            "Bahía Montego",
+            "Port Antonio",
+            "Falmouth",
+            "Nagril",
+            "Mandeville"
+             ]
+             ]
+        
+             ];
+
+        //mostrar vistas
+
+           return view('paises')->with('paises',$paises); 
 });
+
 
 Route::get('prueba', function(){
-    return view('productos.create   ');    
+    return view('productos.create');
 });
 
-
 /**
- * Rutas REST Producto 
+ * Rutas REST Producto
  * 
  */
-Route::resource('productos', ProductoController::class );
+Route::resource('productos',
+                ProductoController::class);
 
+Route::resource('cart'
+                ,CartController::class, [ 'only' => ['index', 'store', 'destroy']]);

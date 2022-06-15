@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categoria;
+use App\Models\Producto;
 use App\Models\Marca;
-use App\Models\producto;
+use App\Models\Categoria;
 use App\Http\Requests\StoreProductoRequest;
-use illuminate\support\Facades\Validator;
+use Illuminate\Support\Facades\Validator;
 
 class ProductoController extends Controller
 {
@@ -17,11 +17,11 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        
-     //seleccionar todos los productos en un arreglo
-       $productos=producto::all();
-       // mostrar la vista de catalogo llevandole los productos
-        
+            //seleccionar los poroductos en un arreglo
+        $productos = Producto::all();
+            //mostra vista del catalogo, llevaole los productos
+        return view("productos.index")
+            ->with('productos', $productos);
     }
 
     /**
@@ -31,12 +31,14 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //Seleccionar marcas en bd: Model Marca
-        $Marcas = Marca::all();
-        
-        //Seleccionar marcas en bd: Model Marca
+        //Seleccionar marcas en BD: Model Marca
+         $marcas = Marca::all();
+        //Seleccionar marcas en BD: Model Marca
         $categorias = Categoria::all();
-        return view('productos.create')->with("marcas", $Marcas)->with("categorias", $categorias);
+        //Mostar eñ formulario, enviando los datos
+        return view ('productos.create')
+             ->with("marcas" , $marcas)
+             ->with("categorias" , $categorias);
     }
 
     /**
@@ -46,80 +48,81 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreProductoRequest $request)
-
     {
-       
-      
-            //validacion exitosa
-            //crear una entidad <<producto>>
+
+        //validacion exitosa
+           //crear una entidad <<producto>>
         $p = new producto();
-        $p-> nombre = $request->nombre;
-        $p->desc = $request->descripcion;
-        $p->precio =$request->precio;
-        $p->marca_id = $request->Marca;
+        $p->nombre=$request->nombre;
+        $p->descrpcion= $request->desc;
+        $p->precio=$request->precio;
+        $p->marca_id=$request->marca;
         $p->categoria_id=$request->categoria;
+       
+        // objeto file
+        $archivo= $request->imagen;
+        $p-> imagen = $archivo->getClientOriginalName();
+        //ruta donde se almacena el achivo
+        $ruta =  public_path()."/img";
+        //movemos  archivo
+        $archivo -> move($ruta,
+                $archivo->getClientOriginalName());
 
-        $archivo = $request->imagen;
 
-        $p->imagen= $archivo ->getClientOriginalName();
-
-        $ruta= public_path()."/img";
-
-        $archivo-> move($ruta,$archivo ->getClientOriginalName());
+        $p->save();
+        //redirecionar: a una ruta disponible
+        return redirect('productos/create')
+             ->with('mensaje' , "Producto registrado exitosamente :3");
 
        
-        
-       $p->save();
-
-        
-        return redirect('productos/create')
-           ->with('mensajito','Producto registrado');
-        
-        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\producto  $producto
+     * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
     public function show($producto)
     {
-        echo "Aqui se va a mostrar el detalle del producto";
+        $p = Producto::find($producto);
+        //
+        return view('productos.details')
+                ->with('producto', $p);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\producto  $producto
+     * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function edit(producto $producto)
+    public function edit($producto)
     {
-        echo "Aqui se muestra el formulario de editar producto";
+        echo "se muestra el formulario de editar";
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\producto  $producto
+     * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update($request, producto $producto)
+    public function update(Request $request, Producto $producto)
     {
-        echo "Guarda el producto editado";
+        echo "guarda el producto editado";
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\producto  $producto
+     * @param  \App\Models\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(producto $producto)
+    public function destroy(Producto $producto)
     {
-        echo " Eliminar los productos";
-    }
+        echo "eliminar el producto";
+}
 }
